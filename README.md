@@ -29,7 +29,7 @@ The comment message should be structured as follows:
 ```
 
 ```
-// TODO: 🟨 🪲 🔄️ It's time to chew bubble gum and kick ass, and I'm all outta gum
+// TODO: 🟨 🐛 🔄️ It's time to chew bubble gum and kick ass, and I'm all outta gum
 ```
 
 ## Required classification Blocks
@@ -46,12 +46,12 @@ This block is used to indicate the priority of a task. It uses three different e
 
 ### 2: Type
 
-This block is used to specify the type of task. It uses two emojis to represent a feature (✨) and a fix (🪲).
+This block is used to specify the type of task. It uses two emojis to represent a feature (✨) and a fix (🐛).
 
 | Emoji | Text         | State   | Desc    |
 | ----- | ------------ |---------| ------- |
 | ✨    | Type.Feature | Feature | Default |
-| 🪲    | Type.Fix     | Fix/Bug |
+| 🐛    | Type.Fix     | Fix/Bug |
 
 ### 3: Context
 
