@@ -2,6 +2,10 @@
     <img alt="Shows the banner of TODO NUKEM, with its logo" src="./resources/svg/todonukem.svg" width="700">
 </p>
 
+<div align="center">
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+</div>
+
 # Coding Comments Convention
 
 **Working Draft**
@@ -107,7 +111,7 @@ Why Use this Comment Convention
 - Later possible filtering of tasks by areas
 - Meta information
 
-### Demo
+### 🎬 Demo
 
 #### Filtering
 
@@ -152,7 +156,7 @@ Here a unit of the block begins with square brackets. Within the square brackets
 
 The language is English. This also applies to the date or quarter format.
 
-### Possible future adaptation:
+### 🌱 Possible future adaptation:
 
 A text only, and text-emoji combination variant is planned as an alternative to the emojis, but this is not part of this version. Have a look at the future Roadmap, e.g. like:
 
@@ -180,6 +184,10 @@ We do not currently offer direct support for this project.
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
 
-## Disclaimer
+## ⚖️ License
+
+See the [LICENSE](LICENSE) file for details.
+
+## ℹ️ Disclaimer
 
 Please note that this project, TODO NUKEM, is not officially associated with or endorsed by the Duke Nukem franchise or its creators. It is an independent project developed by the open-source community and does not claim any rights to the Duke Nukem trademark or any related materials.
