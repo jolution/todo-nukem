@@ -14,6 +14,12 @@
 
 A specification for enhancing TODO messages with emojis for easier comprehension and organization.
 
+## 🚀 Usage
+
+| Package                                                                     | IDE                   | Description                              | Status |
+|-----------------------------------------------------------------------------|--------------------|------------------------------------------|------------|
+| [Snippets Extension](https://github.com/jolution/todo-nukem-snippet-vscode) | Visual Studio Code | Snippets to generate the TODO Convention | In Progress, Alpha |
+
 ## 📚 Summary
 
 The TODO NUKEM specification is a lightweight convention applied to TODO comment messages. It offers straightforward guidelines for crafting feature-rich comments, facilitating the development of automated tools. Designed for rapid visual comprehension of tasks, this convention may enhances efficiency in coding.
@@ -115,7 +121,13 @@ Why Use this Comment Convention
 
 ### 🎬 Demo
 
+#### Generate Comment
+
+![generate-demo.gif](resources/gif/generate-demo.gif)
+
 #### Filtering
+
+_The following is just a demo of what filtering could look like functionally in the future:_
 
 ![filtering-demo.gif](resources/gif/filtering-demo.gif)
 
