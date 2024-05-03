@@ -89,7 +89,7 @@ We are happy to receive feedback on this.
 
 | Type                | Example       | Desc                                                                                                          |
 |---------------------|---------------|---------------------------------------------------------------------------------------------------------------|
-| To be Discussioned (TBD) | [💬 TBD]      | This block is used when a task needs further discussion. It is represented by the 💬 emoji.                   |
+| To Be Discussed (TBD) | [💬 TBD]      | This block is used when a task needs further discussion. It is represented by the 💬 emoji.                   |
 | Scope               | [🎯 ThisComponent] | This block is used to specify the scope of a task. It is represented by the 🎯 emoji.                         |
 | Ticket              | [🎫 TDN-123]<br/>[🎫 TDN#123] | This block is used to link a task to a specific ticket. It is represented by the 🎫 emoji. |
 | Until               | [🔖 2024-Q1]  | This block is used to specify a deadline for a task. It is represented by the 🔖 emoji.                       |
