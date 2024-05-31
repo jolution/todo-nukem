@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "pimmok",
+      "name": "Jochen Simon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17846993?v=4",
+      "profile": "https://jochensimon.com/",
+      "contributions": [
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "todo-nukem",
+  "projectOwner": "jolution"
+}
