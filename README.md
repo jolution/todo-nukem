@@ -188,6 +188,7 @@ If you find this project helpful, please consider giving it a star on [GitHub](h
 [![Star this repository](https://img.shields.io/github/stars/jolution/todo-nukem?style=social)](https://github.com/jolution/todo-nukem)
 
 We do not currently offer direct support for this project.
+
 ## 🗺️ Roadmap
 
 - Additional text-only support (text variant as an alternative to emojis)
@@ -197,6 +198,17 @@ We do not currently offer direct support for this project.
 
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
+
+## 🤝 Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## ⚖️ License
 
