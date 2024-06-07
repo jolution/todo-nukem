@@ -28,5 +28,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "todo-nukem",
-  "projectOwner": "jolution"
+  "projectOwner": "jolution",
+  "linkToUsage": false
 }
