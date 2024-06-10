@@ -197,10 +197,18 @@ We do not currently offer direct support for this project.
 - Additional text-only support (text variant as an alternative to emojis)
 - Add integrations (linter, generator, report ...)
 
-### ✍️ Authors (in alphabetical order)
+## ✍️ Authors (in alphabetical order)
 
 - [@juliankasimir](https://www.github.com/juliankasimir)
 - [@pimmok](https://www.github.com/pimmok)
+
+## 💎 Sponsor
+
+### Eviden
+
+We appreciate the support from [Eviden](https://eviden.com), helping us continue our open source work.
+
+<img style="max-width: 100px" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/main/assets/eviden-logo.svg" alt="Eviden logo.">
 
 ## ⚖️ License
 
