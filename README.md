@@ -153,10 +153,10 @@ _The following is just a demo of what filtering could look like functionally in 
 
 For example, the green and red emoji are not ideal for people with red/green weakness. We are therefore already working on a setting option at project level. Here you could then choose between emoji-only, text-only and or text-emoji combination for each project. But this is an option for the future.
 
-For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/todo-nukem/discussions/categories/q-a).
-
 </p>
 </details>
+
+For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/todo-nukem/discussions/categories/q-a).
 
 ## 📃 Specification
 
