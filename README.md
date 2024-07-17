@@ -51,13 +51,15 @@ The comment message should be structured as follows:
 
 ### 1: Prio
 
-This block is used to indicate the priority of a task. It uses three different emojis to represent low (🟩), medium (🟨), and high (🟥) priority levels.
+This block is used to indicate the priority of a task. It uses three different emojis to represent low (🟩), medium (🔶), and high (🔴) priority levels.
+
+Instead of using the same shape like `🟩 🟨 🟥`, we pick `🟩 🔶 🔴` with different shapes so that the distinctions are not solely based on the colors red and green, especially considering color blindness.
 
 | Emoji | Text        | State  | Desc    |
 | ----- | ----------- | ------ | ------- |
 | 🟩    | Prio.Low    | Normal | Default |
-| 🟨    | Prio.Medium | Middle |
-| 🟥    | Prio.High   | High   |
+| 🔶    | Prio.Medium | Middle |
+| 🔴    | Prio.High   | High   |
 
 ### 2: Type
 
@@ -175,14 +177,31 @@ The language is English. This also applies to the date or quarter format.
 
 ### 🌱 Possible future adaptation:
 
-A text only, and text-emoji combination variant is planned as an alternative to the emojis, but this is not part of this version. Have a look at the future Roadmap, e.g. like:
+#### Tooling
+
+First step is to build linting and generation tools/extensions.
+
+#### Guards
+
+For those who want to use this convention only in dev branches and not in main/production, we are planning to build guards that prevent comments from being merged into main.
+e.g. like GitHub(...) actions or git hooks.
+
+#### Text only, and text-emoji combination variant
+A `text only`, and `text-emoji` combination variant is planned as an alternative to the `emojis only` mode.
+
+e.g. like:
 
 ```
 [🟩-low][✨-feat][🧪️-test]
 ```
 
+#### Project configuration
+
 The plan is for this to depend on the project configuration in the project configuration file, for example it could be called todonukem.json or commentsconvention.json (with or without trailing dot for the filename) for a general naming. But that's just an idea so far and not part of this version.
 
+#### User configuration
+
+At some point, it would also be great if, as discussed in step 2, we could have not only a project-level config but also a user-level config that can override the default and project config. For example, if a user prefers a different config than the rest, we could use text-only as a basis by default, and then through our future extensions, provide a different visual variant without changing the code.
 
 ## ❤️ Support
 
