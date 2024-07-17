@@ -4,22 +4,30 @@
   ],
   "imageSize": 100,
   "commit": false,
+  "contributorsSortAlphabetically": true,
   "commitType": "docs",
   "commitConvention": "angular",
   "contributors": [
+    {
+      "login": "pimmok",
+      "name": "Jochen Simon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17846993?v=4",
+      "profile": "https://jochensimon.com/",
+      "contributions": [
+        "ideas",
+        "design",
+        "code"
+      ]
+    },
     {
       "login": "juliankasimir",
       "name": "Julian Kasimir",
       "avatar_url": "https://avatars.githubusercontent.com/u/120172350?v=4",
       "profile": "https://github.com/juliankasimir",
       "contributions": [
-        "ideas"},{
-      "login": "pimmok",
-      "name": "Jochen Simon",
-      "avatar_url": "https://avatars.githubusercontent.com/u/17846993?v=4",
-      "profile": "https://jochensimon.com/",
-      "contributions": [
-        "design"
+        "ideas",
+        "design",
+        "code"
       ]
     }
   ],
@@ -27,7 +35,7 @@
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "todo-nukem",
+  "projectName": "le-checkout-jira",
   "projectOwner": "jolution",
   "linkToUsage": false
 }
