@@ -29,13 +29,22 @@
         "design",
         "code"
       ]
+    },
+    {
+      "login": "noahimwind",
+      "name": "Noah Duerkes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83748530?v=4",
+      "profile": "https://github.com/noahimwind",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "le-checkout-jira",
+  "projectName": "todo-nukem",
   "projectOwner": "jolution",
   "linkToUsage": false
 }
