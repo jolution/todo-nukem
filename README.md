@@ -44,7 +44,7 @@ The comment message should be structured as follows:
 ```
 
 ```
-// TODO: 🟨 🐛 🔄️ It's time to chew bubble gum and kick ass, and I'm all outta gum
+// TODO: 🔶 🐛 🔄️ It's time to chew bubble gum and kick ass, and I'm all outta gum
 ```
 
 ## Required classification Blocks
@@ -134,6 +134,8 @@ Why Use this Comment Convention
 
 _The following is just a demo of what filtering could look like functionally in the future:_
 
+You see here an old state of the prio emojis.
+
 ![filtering-demo.gif](resources/gif/filtering-demo.gif)
 
 ## ❓FAQ
@@ -143,7 +145,6 @@ _The following is just a demo of what filtering could look like functionally in 
 <p>The developers surveyed so far said they rarely use FIXME. We have therefore currently decided to have the most comprehensive convention possible. In the future, we plan to make this adjustable per project. Therefore, this is only the default case.</p>
 </details>
 
-
 <details>
 <summary>What is the difference between the review and the TBD emoji?</summary>
 <p>Review is when the category is not yet available. TBD is more likely to be additional when the category is already clear. But this may change in the future version.</p>
@@ -152,10 +153,7 @@ _The following is just a demo of what filtering could look like functionally in 
 <details>
 <summary>How did you choose the emojis?</summary>
 <p>We compared many emojis and ensured that they were similar in size. These were then shown to a few developers to make a general selection.
-
-For example, the green and red emoji are not ideal for people with red/green weakness. We are therefore already working on a setting option at project level. Here you could then choose between emoji-only, text-only and or text-emoji combination for each project. But this is an option for the future.
-
-</p>
+For example, the green and red emoji are not ideal for people with red/green weakness. We are therefore already working on a setting option at project level. Here you could then choose between emoji-only, text-only and or text-emoji combination for each project. But this is an option for the future.</p>
 </details>
 
 For more questions and answers, please visit our [Q&A Discussions](https://github.com/jolution/todo-nukem/discussions/categories/q-a).
@@ -175,11 +173,13 @@ Here a unit of the block begins with square brackets. Within the square brackets
 
 The language is English. This also applies to the date or quarter format.
 
+## 🗺️ Roadmap
+
+- Surveys and data are currently being collected
+- Add integrations (linter, generator, report ...)
+- Testing and feedback
+
 ### 🌱 Possible future adaptation:
-
-#### Tooling
-
-First step is to build linting and generation tools/extensions.
 
 #### Guards
 
@@ -210,11 +210,6 @@ If you find this project helpful, please consider giving it a star on [GitHub](h
 [![Star this repository](https://img.shields.io/github/stars/jolution/todo-nukem?style=social)](https://github.com/jolution/todo-nukem)
 
 We do not currently offer direct support for this project.
-
-## 🗺️ Roadmap
-
-- Additional text-only support (text variant as an alternative to emojis)
-- Add integrations (linter, generator, report ...)
 
 ## ✍️ Authors (in alphabetical order)
 
