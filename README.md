@@ -97,18 +97,18 @@ We are happy to receive feedback on this.
 | To Be Discussed (TBD) | [💬 TBD]      | This block is used when a task needs further discussion. It is represented by the 💬 emoji.                   |
 | Scope               | [🎯 ThisComponent] | This block is used to specify the scope of a task. It is represented by the 🎯 emoji.                         |
 | Ticket              | [🎫 TDN-123]<br/>[🎫 TDN#123] | This block is used to link a task to a specific ticket. It is represented by the 🎫 emoji. |
-| Until               | [🔖 2024-Q1]  | This block is used to specify a deadline for a task. It is represented by the 🔖 emoji.                       |
-| Mention             | [👤 UserName] | This block is used to mention a specific person. It is represented by the 👤 emoji.                           |
+| Until               | [📅 2025-Q1]  | This block is used to specify a deadline for a task. It is represented by the 📅 emoji.                       |
+| Assignee            | [👤 Assignee.Name] | This block is used to assign a task to a specific person. It is represented by the 👤 emoji. |
+| Author              | [✍️ Author.Name]   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
 | Version             | [🔖 v1]       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
 | Docs                | [📚 Docs]     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
-
 
 ## Some Elements missing?
 
 Are you missing an important emoji? Then take a look at the Contribution Guidelines and create a new issue or pull request.
 
 ```
-| 📦    | Context.Package  | Package       |
+| 📦    | Context.Package  | Package |
 ```
 
 e.g.
