@@ -102,7 +102,7 @@ We are happy to receive feedback on this.
 | Author              | [✍️ Author.Name]   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
 | Version             | [🔖 v1]       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
 | Docs                | [📚 Docs]     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
-| Block-Commit     | [🛑 Block-Commit] | This block is used to prevent a commit if certain conditions are not met. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
+| Block-Commit     | [🛑 Block-Commit] | This block is used to prevent a commit if this Block is set. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
 
 ## Some Elements missing?
 
