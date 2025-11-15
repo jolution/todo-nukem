@@ -17,11 +17,12 @@
 
 A specification for enhancing TODO messages with emojis for easier comprehension and organization.
 
-## 🚀 Usage
+## Nutzung
 
-| Package                                                                     | IDE                   | Description                              | Status |
-|-----------------------------------------------------------------------------|--------------------|------------------------------------------|------------|
-| [Snippets Extension](https://github.com/jolution/todo-nukem-snippet-vscode) | Visual Studio Code | Snippets to generate the TODO Convention | In Progress, Alpha |
+| Package | IDE / Umgebung | Beschreibung | Status |
+|--------|----------------|--------------|--------|
+| [Generator Extension](https://github.com/jolution/todo-nukem-generator-vscode) | Visual Studio Code | Generiert Einträge nach der TODO-Nukem-Konvention | Alpha |
+| [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom-Rule zur Validierung der Konvention | Alpha |
 
 ## 📚 Summary
 
@@ -113,6 +114,7 @@ Are you missing an important emoji? Then take a look at the Contribution Guideli
 ```
 
 e.g.
+
 ```
 | ⬛    | Prio.Unknown | Unknown |
 ```
@@ -180,7 +182,7 @@ The language is English. This also applies to the date or quarter format.
 - Add integrations (linter, generator, report ...)
 - Testing and feedback
 
-### 🌱 Possible future adaptation:
+### 🌱 Possible future adaptation
 
 #### Guards
 
@@ -188,6 +190,7 @@ For those who want to use this convention only in dev branches and not in main/p
 e.g. like GitHub(...) actions or git hooks.
 
 #### Text only, and text-emoji combination variant
+
 A `text only`, and `text-emoji` combination variant is planned as an alternative to the `emojis only` mode.
 
 e.g. like:
@@ -219,11 +222,9 @@ We do not currently offer direct support for this project.
 
 ## 💎 Sponsor
 
-### Eviden
+### Atos
 
-We appreciate the support from [Eviden](https://eviden.com), helping us continue our open source work.
-
-<img style="max-width: 100px" width="100" src="https://raw.githubusercontent.com/DE-AMS-AD-VAPPS/brand/main/assets/eviden-logo.svg" alt="Eviden logo.">
+We appreciate the support from [Atos](https://atos.net), helping us continue our open source work.
 
 ## ⚖️ License
 
@@ -256,4 +257,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
