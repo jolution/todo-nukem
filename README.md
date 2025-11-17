@@ -17,12 +17,48 @@
 
 A specification for enhancing TODO messages with emojis for easier comprehension and organization.
 
-## Nutzung
+## Usage
 
-| Package | IDE / Umgebung | Beschreibung | Status |
-|--------|----------------|--------------|--------|
-| [Generator Extension](https://github.com/jolution/todo-nukem-generator-vscode) | Visual Studio Code | Generiert Einträge nach der TODO-Nukem-Konvention | Alpha |
-| [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom-Rule zur Validierung der Konvention | Alpha |
+| Package | IDE / Environment | Description | Status |
+|---------|-------------------|-------------|--------|
+| [Generator Extension](https://github.com/jolution/todo-nukem-generator-vscode) | Visual Studio Code | Generates entries according to the TODO Nukem convention | Alpha |
+| [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom rule to validate the convention | Alpha |
+
+### Technical integration
+
+#### Block-Commit (Commit Guard)
+
+The `[🛑 Block-Commit]` meta block is used to prevent a commit if this marker is present in the code. This is intended as a safety mechanism for critical TODOs that must be resolved before code can be committed.
+
+**Note:** This block does not work out of the box. You need to configure your tooling (e.g., git hooks) to enforce this rule. For example, with [lefthook](https://github.com/evilmartians/lefthook), you can block commits containing this marker. See the section "Block-Commit Handling" above for a ready-to-use configuration snippet.
+
+**Example:**
+
+```js
+// TODO: 🟩 🐛 🛠️ Fix this logic [🛑 Block-Commit]
+```
+
+<details>
+<summary>Example solution: Commit blocking with lefthook</summary>
+
+```yaml
+commands:
+  block-commit-check:
+    run: |
+      if grep -l "\[🛑 Block-Commit\]" {staged_files} 2>/dev/null; then
+        echo "❌ Commit blocked: Found '[🛑 Block-Commit]' marker in staged files"
+        echo "Please resolve all TODOs with '[🛑 Block-Commit]' before committing"
+        echo ""
+        echo "Found in:"
+        grep -Hn "\[🛑 Block-Commit\]" {staged_files} 2>/dev/null
+        echo ""
+        echo "ℹ️ This blocking is based on TODO NUKEM convention."
+        echo " Learn more: https://github.com/jolution/todo-nukem/blob/main/README.md"
+        exit 1
+      fi
+```
+
+</details>
 
 ## 📚 Summary
 
