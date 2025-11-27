@@ -21,7 +21,7 @@ A specification for enhancing TODO messages with emojis for easier comprehension
 
 | Package | IDE / Environment | Description | Status |
 |---------|-------------------|-------------|--------|
-| [Generator Extension](https://github.com/jolution/todo-nukem-generator-vscode) | Visual Studio Code | Generates entries according to the TODO Nukem convention | Alpha |
+| [VSCode Extension](https://github.com/jolution/todo-nukem-vscode) | Visual Studio Code | Generator, viewer and snippets for the TODO Nukem convention | Alpha |
 | [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom rule to validate the convention | Alpha |
 
 ### Technical integration
@@ -136,7 +136,9 @@ We are happy to receive feedback on this.
 | Ticket              | [🎫 TDN-123]<br/>[🎫 TDN#123] | This block is used to link a task to a specific ticket. It is represented by the 🎫 emoji. |
 | Until               | [📅 2025-Q1]  | This block is used to specify a deadline for a task. It is represented by the 📅 emoji.                       |
 | Assignee            | [👤 Assignee.Name] | This block is used to assign a task to a specific person. It is represented by the 👤 emoji. |
+| SelfAssignee         | [👤 SelfAssignee]  | This block is used to automatically assign the current git user as assignee. |
 | Author              | [✍️ Author.Name]   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
+| SelfAuthor           | [✍️ SelfAuthor]    | This block is used to automatically set the author to the current git user. |
 | Version             | [🔖 v1]       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
 | Docs                | [📚 Docs]     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
 | Block-Commit     | [🛑 Block-Commit] | This block is used to prevent a commit if this Block is set. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
