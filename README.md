@@ -28,14 +28,20 @@ A specification for enhancing TODO messages with emojis for easier comprehension
 
 #### Block-Commit (Commit Guard)
 
-The `[🛑 Block-Commit]` meta block is used to prevent a commit if this marker is present in the code. This is intended as a safety mechanism for critical TODOs that must be resolved before code can be committed.
+The `[block-commit]` meta block is used to prevent a commit if this marker is present in the code. This is intended as a safety mechanism for critical TODOs that must be resolved before code can be committed.
 
-**Note:** This block does not work out of the box. You need to configure your tooling (e.g., git hooks) to enforce this rule. For example, with [lefthook](https://github.com/evilmartians/lefthook), you can block commits containing this marker. See the section "Block-Commit Handling" above for a ready-to-use configuration snippet.
+**Note:** This block does not work out of the box. You need to configure your tooling (e.g., git hooks) to enforce this rule. For example, with [lefthook](https://github.com/evilmartians/lefthook), you can block commits containing this marker.
 
-**Example:**
+**Example in source code:**
 
 ```js
-// TODO: 🟩 🐛 🛠️ Fix this logic [🛑 Block-Commit]
+// TODO: [low] [fix] [optimize] Fix this logic [block-commit]
+```
+
+**Visual display (with decorations):**
+
+```js
+// TODO: 🟩 🐛 🛠️ Fix this logic 🛑
 ```
 
 <details>
@@ -45,12 +51,12 @@ The `[🛑 Block-Commit]` meta block is used to prevent a commit if this marker 
 commands:
   block-commit-check:
     run: |
-      if grep -l "\[🛑 Block-Commit\]" {staged_files} 2>/dev/null; then
-        echo "❌ Commit blocked: Found '[🛑 Block-Commit]' marker in staged files"
-        echo "Please resolve all TODOs with '[🛑 Block-Commit]' before committing"
+      if grep -l "\[block-commit\]" {staged_files} 2>/dev/null; then
+        echo "❌ Commit blocked: Found '[block-commit]' marker in staged files"
+        echo "Please resolve all TODOs with '[block-commit]' before committing"
         echo ""
         echo "Found in:"
-        grep -Hn "\[🛑 Block-Commit\]" {staged_files} 2>/dev/null
+        grep -Hn "\[block-commit\]" {staged_files} 2>/dev/null
         echo ""
         echo "ℹ️ This blocking is based on TODO NUKEM convention."
         echo " Learn more: https://github.com/jolution/todo-nukem/blob/main/README.md"
@@ -70,11 +76,35 @@ The comment message should be structured as follows:
 
 ### 📝 Code
 
+**In source code:**
+
 ```
-// TODO: <classification> <description> [optional meta]
+// TODO: [priority] [type] [context] <description> [optional meta]
 ```
 
+**Visual display (with decorations):**
+
+The extension decorates the keys with emojis in the editor, so you see:
+
+```
+// TODO: 🟩 ✨ 🛠️ <description> [optional meta]
+```
+
+> **Note:** You can customize the display mode in `todonukem.json` (emoji, text, or emoji-text combination).
+
 ## 🌟 Examples
+
+**In source code:**
+
+```
+// TODO: [low] [feature] [optimize] Gear up and get ready to "Hail to the king, baby!" as I kick some alien behind
+```
+
+```
+// TODO: [medium] [fix] [update] It's time to chew bubble gum and kick ass, and I'm all outta gum
+```
+
+**Visual display (with decorations):**
 
 ```
 // TODO: 🟩 ✨ 🛠️ Gear up and get ready to "Hail to the king, baby!" as I kick some alien behind
@@ -92,36 +122,36 @@ This block is used to indicate the priority of a task. It uses three different e
 
 Instead of using the same shape like `🟩 🟨 🟥`, we pick `🟩 🔶 🔴` with different shapes so that the distinctions are not solely based on the colors red and green, especially considering color blindness.
 
-| Emoji | Text        | State  | Desc    |
-| ----- | ----------- | ------ | ------- |
-| 🟩    | Prio.Low    | Normal | Default |
-| 🔶    | Prio.Medium | Middle |
-| 🔴    | Prio.High   | High   |
+| Emoji | Key         | Desc    |
+| ----- | ----------- | ------- |
+| 🟩    | `[low]`     | Default |
+| 🔶    | `[medium]`  |         |
+| 🔴    | `[high]`    |         |
 
 ### 2: Type
 
 This block is used to specify the type of task. It uses two emojis to represent a feature (✨) and a fix (🐛).
 
-| Emoji | Text         | State   | Desc    |
-| ----- | ------------ |---------| ------- |
-| ✨    | Type.Feature | Feature | Default |
-| 🐛    | Type.Fix     | Fix/Bug |
+| Emoji | Key         | Desc    |
+| ----- | ----------- | ------- |
+| ✨    | `[feature]` | Default |
+| 🐛    | `[fix]`     |         |
 
 ### 3: Context
 
 This block is used to provide context for the task. It uses a variety of emojis to represent different contexts such as design (🎨), documentation (📝), testing (🧪), performance (🚀), language (🌐), security (🛡), update (🔄), optimization (🛠), and review (👀).
 
-| Emoji | Text             | State         | Desc |
-| ----- | ---------------- | ------------- | ---- |
-| 🎨    | Context.Design   | Design        |
-| 📝    | Context.Doc      | Documentation |
-| 🧪    | Context.Test     | Test          |
-| 🚀    | Context.Perf     | Performance   |
-| 🌐    | Context.Lang     | Language      |
-| 🛡     | Context.Sec      | Security      |
-| 🔄    | Context.Update   | Update        |
-| 🛠     | Context.Optimize | Optimize      |
-| 👀    | Context.Review   | Review        |
+| Emoji | Key          |
+| ----- | ------------ |
+| 🎨    | `[design]`   |
+| 📝    | `[doc]`      |
+| 🧪    | `[test]`     |
+| 🚀    | `[perf]`     |
+| 🌐    | `[lang]`     |
+| 🛡     | `[sec]`      |
+| 🔄    | `[update]`   |
+| 🛠     | `[optimize]` |
+| 👀    | `[review]`   |
 
 ## Optional Meta Blocks
 
@@ -131,17 +161,15 @@ We are happy to receive feedback on this.
 
 | Type                | Example       | Desc                                                                                                          |
 |---------------------|---------------|---------------------------------------------------------------------------------------------------------------|
-| To Be Discussed (TBD) | [💬 TBD]      | This block is used when a task needs further discussion. It is represented by the 💬 emoji.                   |
-| Scope               | [🎯 ThisComponent] | This block is used to specify the scope of a task. It is represented by the 🎯 emoji.                         |
-| Ticket              | [🎫 TDN-123]<br/>[🎫 TDN#123] | This block is used to link a task to a specific ticket. It is represented by the 🎫 emoji. |
-| Until               | [📅 2025-Q1]  | This block is used to specify a deadline for a task. It is represented by the 📅 emoji.                       |
-| Assignee            | [👤 Assignee.Name] | This block is used to assign a task to a specific person. It is represented by the 👤 emoji. |
-| SelfAssignee         | [👤 SelfAssignee]  | This block is used to automatically assign the current git user as assignee. |
-| Author              | [✍️ Author.Name]   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
-| SelfAuthor           | [✍️ SelfAuthor]    | This block is used to automatically set the author to the current git user. |
-| Version             | [🔖 v1]       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
-| Docs                | [📚 Docs]     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
-| Block-Commit     | [🛑 Block-Commit] | This block is used to prevent a commit if this Block is set. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
+| To Be Discussed (TBD) | `[tbd]`      | This block is used when a task needs further discussion. It is represented by the 💬 emoji.                   |
+| Scope               | `[scope: ThisComponent]` | This block is used to specify the scope of a task. It is represented by the 🎯 emoji.                         |
+| Ticket              | `[ticket: TDN-123]` | This block is used to link a task to a specific ticket. It is represented by the 🎫 emoji. |
+| Until               | `[until: 2025-Q1]`  | This block is used to specify a deadline for a task. It is represented by the 📅 emoji.                       |
+| Assignee            | `[assignee: Name]` | This block is used to assign a task to a specific person. It is represented by the 👤 emoji. |
+| Author              | `[author: Name]`   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
+| Version             | `[version: v1]`       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
+| Docs                | `[docs]`     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
+| Block-Commit     | `[block-commit]` | This block is used to prevent a commit if this Block is set. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
 
 ## Some Elements missing?
 
@@ -203,14 +231,20 @@ For more questions and answers, please visit our [Q&A Discussions](https://githu
 
 The specification builds on existing TODO messages.
 
-After the "TODO:" there is a space and then the first block.
+**In source code format:**
 
-The classification block contains exactly 3 emojis. These are separated from each other by a space.
+After the "TODO:" there is a space and then the first classification block.
+
+The classification block contains exactly 3 keys in square brackets: `[priority] [type] [context]`. These are separated from each other by a space.
 
 This is followed by the message as usual.
 
 The meta block follows the message. This is optional.
-Here a unit of the block begins with square brackets. Within the square brackets you start with the appropriate emoji followed by a space and the associated text. A space is placed after the closed bracket if another unit follows. Of course, there doesn't have to be a space at the end.
+Here a unit of the block begins with square brackets. Within the square brackets you start with the appropriate key (e.g., `[ticket: ...]`, `[until: ...]`, etc.). A space is placed after the closed bracket if another unit follows. Of course, there doesn't have to be a space at the end.
+
+**Visual display:**
+
+The VSCode extension and other tools can decorate the keys with emojis for better visual comprehension while keeping the source code clean and readable.
 
 The language is English. This also applies to the date or quarter format.
 
@@ -229,12 +263,20 @@ e.g. like GitHub(...) actions or git hooks.
 
 #### Text only, and text-emoji combination variant
 
-A `text only`, and `text-emoji` combination variant is planned as an alternative to the `emojis only` mode.
+A `text only`, and `text-emoji` combination variant is available via the `todonukem.json` configuration file as an alternative to the `emoji only` mode (default).
 
-e.g. like:
+Display modes:
 
-```
-[🟩-low][✨-feat][🧪️-test]
+- **Emoji only** (default): `🟩 ✨ 🧪`
+- **Text only**: `Low Feature Test`
+- **Emoji-text combination**: `🟩-low ✨-feature 🧪-test`
+
+Configure via `todonukem.json`:
+
+```json
+{
+  "displayMode": "emoji-text"
+}
 ```
 
 #### Project configuration
