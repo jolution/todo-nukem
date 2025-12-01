@@ -41,7 +41,7 @@ The `[block-commit]` meta block is used to prevent a commit if this marker is pr
 **Visual display (with decorations):**
 
 ```js
-// TODO: 🟩 🐛 🛠️ Fix this logic 🛑
+// TODO: 🟩 🐛 🛠️ Fix this logic ⛔
 ```
 
 <details>
@@ -58,7 +58,7 @@ commands:
         echo "Found in:"
         grep -Hn "\[block-commit\]" {staged_files} 2>/dev/null
         echo ""
-        echo "ℹ️ This blocking is based on TODO NUKEM convention."
+        echo "⛔ This blocking is based on TODO NUKEM convention."
         echo " Learn more: https://github.com/jolution/todo-nukem/blob/main/README.md"
         exit 1
       fi
@@ -169,7 +169,7 @@ We are happy to receive feedback on this.
 | Author              | `[author: Name]`   | This block is used to indicate the author of a task. It is represented by the ✍️ emoji.     |
 | Version             | `[version: v1]`       | This block is used to specify the version of a task. It is represented by the 🔖 emoji.                       |
 | Docs                | `[docs]`     | This block is used to indicate that a task is related to documentation. It is represented by the 📚 emoji.    |
-| Block-Commit     | `[block-commit]` | This block is used to prevent a commit if this Block is set. It is represented by the 🛑 emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
+| Block-Commit     | `[block-commit]` | This block is used to prevent a commit if this Block is set. It is represented by the ⛔ emoji. This only works with additional configuration for Git hooks tools and does not work out of the box.   |
 
 ## Some Elements missing?
 
