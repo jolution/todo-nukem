@@ -51,14 +51,15 @@ The `[block-commit]` meta block is used to prevent a commit if this marker is pr
 commands:
   block-commit-check:
     run: |
-      if grep -l "\[block-commit\]" {staged_files} 2>/dev/null; then
-        echo "❌ Commit blocked: Found '[block-commit]' marker in staged files"
-        echo "Please resolve all TODOs with '[block-commit]' before committing"
+      MARKER="[block-commit]"
+      if grep -l "$MARKER" {staged_files} 2>/dev/null; then
+        echo "⛔ Commit blocked: Found '$MARKER' marker in staged files"
+        echo "Please resolve all TODOs with '$MARKER' before committing"
         echo ""
         echo "Found in:"
-        grep -Hn "\[block-commit\]" {staged_files} 2>/dev/null
+        grep -Hn "$MARKER" {staged_files} 2>/dev/null
         echo ""
-        echo "⛔ This blocking is based on TODO NUKEM convention."
+        echo "This blocking is based on TODO NUKEM convention."
         echo " Learn more: https://github.com/jolution/todo-nukem/blob/main/README.md"
         exit 1
       fi
