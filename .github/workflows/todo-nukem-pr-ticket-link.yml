@@ -1,0 +1,21 @@
+name: TODO NUKEM - Auto PR Ticket Link from Branch
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  update-pr-body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Add TODO NUKEM ticket link
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

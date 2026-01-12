@@ -1,0 +1,24 @@
+{
+  "name": "todo-nukem",
+  "version": "1.0.0",
+  "description": "A specification for enhancing TODO messages with emojis for easier comprehension and organization",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jolution/todo-nukem.git"
+  },
+  "keywords": [
+    "todo",
+    "comments",
+    "convention",
+    "coding-standards"
+  ],
+  "author": "jolution",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/jolution/todo-nukem/issues"
+  },
+  "homepage": "https://github.com/jolution/todo-nukem#readme",
+  "todonukem": {
+    "ticketBaseUrl": "https://your-domain.atlassian.net/browse/"
+  }
+}
