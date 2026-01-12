@@ -2,13 +2,28 @@
 
 Automatically adds ticket links to Pull Request descriptions based on branch names.
 
-## Usage
+## Quick Setup
+
+Create `.github/workflows/todo-nukem-pr-ticket-link.yml` in your project:
 
 ```yaml
-- name: Add TODO NUKEM ticket link
-  uses: jolution/todo-nukem/github-actions/pr-ticket-link@main
-  with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
+name: TODO NUKEM - Add Ticket Link to PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  add-ticket-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add ticket link to PR
+        uses: jolution/todo-nukem/github-actions/pr-ticket-link@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Configuration
