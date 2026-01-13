@@ -11,7 +11,7 @@ name: TODO NUKEM - Add Ticket Link to PR
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened]
 
 jobs:
   add-ticket-link:
@@ -69,9 +69,10 @@ _via [TODO NUKEM](https://github.com/jolution/todo-nukem)_
 
 ## Inputs
 
-| Name           | Description                 | Required | Default               |
-| -------------- | --------------------------- | -------- | --------------------- |
-| `github-token` | GitHub token for API access | Yes      | `${{ github.token }}` |
+| Name            | Description                              | Required | Default               |
+| --------------- | ---------------------------------------- | -------- | --------------------- |
+| `github-token`  | GitHub token for API access              | Yes      | `${{ github.token }}` |
+| `hidePromotion` | Hide the 'via TODO NUKEM' promotion link | No       | `false`               |
 
 ## Related
 

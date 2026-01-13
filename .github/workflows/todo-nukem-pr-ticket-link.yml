@@ -2,7 +2,7 @@ name: TODO NUKEM - Auto PR Ticket Link from Branch
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened]
 
 permissions:
   pull-requests: write

@@ -23,6 +23,8 @@ A specification for enhancing TODO messages with emojis for easier comprehension
 |---------|-------------------|-------------|--------|
 | [VSCode Extension](https://github.com/jolution/todo-nukem-vscode) | Visual Studio Code | Generator, viewer and snippets for the TODO Nukem convention | Alpha |
 | [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom rule to validate the convention | Alpha |
+| [PR Ticket Link Action](./github-actions/pr-ticket-link) | GitHub Actions | Automatically adds ticket links to Pull Request descriptions based on branch names | Alpha |
+
 
 ### Technical integration
 

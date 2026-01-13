@@ -90,6 +90,13 @@ runs:
 
           const current_body = pr.body || '';
           
+          // Check if ticket link already exists
+          const ticketLinkPattern = new RegExp(`🎫.*${process.env.TICKET_NUMBER}.*${process.env.TICKET_BASE_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}${process.env.TICKET_NUMBER}`);
+          if (ticketLinkPattern.test(current_body)) {
+            console.log('✅ Ticket link already exists in PR description, skipping update');
+            return;
+          }
+          
           const hidePromotion = '${{ inputs.hidePromotion }}' === 'true';
           const promotion = hidePromotion ? '' : '\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*';
           const ticket_link = `[ 🎫 [${process.env.TICKET_NUMBER}](${process.env.TICKET_BASE_URL}${process.env.TICKET_NUMBER}) ]${promotion}`;
