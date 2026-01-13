@@ -22,7 +22,17 @@ runs:
     - name: Read ticketBaseUrl
       shell: bash
       run: |
-        # Try .todonukem.json first (local override)
+        # Try .todonukem-local.json first (local override)
+        if [ -f .todonukem-local.json ]; then
+          TICKET_BASE_URL=$(jq -r '.ticketBaseUrl // empty' .todonukem-local.json)
+          if [ -n "$TICKET_BASE_URL" ]; then
+            echo "✅ Using ticketBaseUrl from .todonukem-local.json"
+            echo "TICKET_BASE_URL=$TICKET_BASE_URL" >> $GITHUB_ENV
+            exit 0
+          fi
+        fi
+
+        # Try .todonukem.json
         if [ -f .todonukem.json ]; then
           TICKET_BASE_URL=$(jq -r '.ticketBaseUrl // empty' .todonukem.json)
           if [ -n "$TICKET_BASE_URL" ]; then
@@ -42,23 +52,26 @@ runs:
           fi
         fi
 
-        echo "❌ Error: ticketBaseUrl not found in .todonukem.json or package.json"
-        exit 1
+        echo "⚠️ Warning: ticketBaseUrl not found in .todonukem-local.json, .todonukem.json or package.json"
+        echo "Skipping ticket link addition. Configure ticketBaseUrl in one of these files to enable this feature."
+        exit 0
 
     - name: Extract ticket number from branch
+      if: env.TICKET_BASE_URL
       shell: bash
       run: |
         BRANCH_NAME=${GITHUB_HEAD_REF}
         TICKET_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+')
         if [ -z "$TICKET_NUMBER" ]; then
-          echo "❌ No ticket number found in branch name"
-          exit 1
+          echo "⚠️ No ticket number found in branch name"
+          exit 0
         fi
         echo "🎫 Found ticket number: $TICKET_NUMBER"
         echo "TICKET_NUMBER=$TICKET_NUMBER" >> $GITHUB_ENV
 
     - name: Update PR body
       uses: actions/github-script@v7
+      if: env.TICKET_BASE_URL && env.TICKET_NUMBER
       with:
         github-token: ${{ inputs.github-token }}
         script: |
@@ -88,4 +101,3 @@ runs:
             pull_number: pr_number,
             body: new_body
           });
-          console.log('✨ Ticket link appended to PR description');
