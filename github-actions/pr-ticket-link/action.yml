@@ -60,8 +60,8 @@ runs:
       if: env.TICKET_BASE_URL
       shell: bash
       run: |
-        BRANCH_NAME=${GITHUB_HEAD_REF}
-        TICKET_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+')
+        BRANCH_NAME="${GITHUB_HEAD_REF:-}"
+        TICKET_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+' || true)
         if [ -z "$TICKET_NUMBER" ]; then
           echo "⚠️ No ticket number found in branch name"
           exit 0
