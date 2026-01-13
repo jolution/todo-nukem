@@ -15,6 +15,10 @@ inputs:
     description: "GitHub token for API access"
     required: true
     default: ${{ github.token }}
+  hidePromotion:
+    description: "Hide the 'via TODO NUKEM' promotion link"
+    required: false
+    default: "false"
 
 runs:
   using: "composite"
@@ -86,9 +90,9 @@ runs:
 
           const current_body = pr.body || '';
           
-          const ticket_link = `[ 🎫 [${process.env.TICKET_NUMBER}](${process.env.TICKET_BASE_URL}${process.env.TICKET_NUMBER}) ]
-
-          *via [TODO NUKEM](https://github.com/jolution/todo-nukem)*`;
+          const hidePromotion = '${{ inputs.hidePromotion }}' === 'true';
+          const promotion = hidePromotion ? '' : '\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*';
+          const ticket_link = `[ 🎫 [${process.env.TICKET_NUMBER}](${process.env.TICKET_BASE_URL}${process.env.TICKET_NUMBER}) ]${promotion}`;
 
           // Append ticket link to existing description
           const new_body = current_body 
