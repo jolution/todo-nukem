@@ -71,18 +71,16 @@ runs:
             pull_number: pr_number
           });
 
-          const ticket_info = `
-          ---
-          [🎫 ${process.env.TICKET_NUMBER}](${process.env.TICKET_BASE_URL}${process.env.TICKET_NUMBER})
-
-          *via [TODO NUKEM](https://github.com/jolution/todo-nukem)*
-          `;
           const current_body = pr.body || '';
+          
+          const ticket_link = `[ 🎫 [${process.env.TICKET_NUMBER}](${process.env.TICKET_BASE_URL}${process.env.TICKET_NUMBER}) ]
+
+          *via [TODO NUKEM](https://github.com/jolution/todo-nukem)*`;
 
           // Append ticket link to existing description
           const new_body = current_body 
-            ? `${current_body}\n${ticket_info}`
-            : ticket_info.trim();
+            ? `${current_body}\n\n---\n${ticket_link}`
+            : ticket_link;
 
           await github.rest.pulls.update({
             owner: context.repo.owner,
