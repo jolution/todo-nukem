@@ -23,6 +23,7 @@ A specification for enhancing TODO messages with emojis for easier comprehension
 |---------|-------------------|-------------|--------|
 | [VSCode Extension](https://github.com/jolution/todo-nukem-vscode) | Visual Studio Code | Generator, viewer and snippets for the TODO Nukem convention | Alpha |
 | [ESLint Rule](https://github.com/jolution/eslint-plugin-todo-nukem) | ESLint | Custom rule to validate the convention | Alpha |
+| [Copilot Instructions](./.github/copilot-instructions.md) | Copilot | Instructions for using TODO Nukem convention with Copilot | Alpha |
 | [PR Ticket Link Action](./github-actions/pr-ticket-link) | GitHub Actions | Automatically adds ticket links to Pull Request descriptions based on branch names | Alpha |
 
 
@@ -93,7 +94,7 @@ The extension decorates the keys with emojis in the editor, so you see:
 // TODO: 🟩 ✨ 🛠️ <description> [optional meta]
 ```
 
-> **Note:** You can customize the display mode in `todonukem.json` (emoji, text, or emoji-text combination).
+> **Note:** You can customize the display mode in `.todonukem.json` (project-wide) or `.todonukem-local.json` (local, not committed) for emoji, text, or emoji-text combination.
 
 ## 🌟 Examples
 
@@ -266,7 +267,7 @@ e.g. like GitHub(...) actions or git hooks.
 
 #### Text only, and text-emoji combination variant
 
-A `text only`, and `text-emoji` combination variant is available via the `todonukem.json` configuration file as an alternative to the `emoji only` mode (default).
+A `text only`, and `text-emoji` combination variant is available via the `.todonukem.json` (project-wide) or `.todonukem-local.json` (local, not committed) configuration file as an alternative to the `emoji only` mode (default).
 
 Display modes:
 
@@ -274,13 +275,15 @@ Display modes:
 - **Text only**: `Low Feature Test`
 - **Emoji-text combination**: `🟩-low ✨-feature 🧪-test`
 
-Configure via `todonukem.json`:
+Configure via `.todonukem.json` (project-wide, committed) or `.todonukem-local.json` (local, gitignored):
 
 ```json
 {
   "displayMode": "emoji-text"
 }
 ```
+
+> **Note:** `.todonukem-local.json` takes precedence over `.todonukem.json` and is intended for personal preferences without affecting the team configuration.
 
 #### Project configuration
 
