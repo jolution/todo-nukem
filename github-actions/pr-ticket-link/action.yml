@@ -25,40 +25,7 @@ runs:
   steps:
     - name: Read ticketBaseUrl
       shell: bash
-      run: |
-        # Try .todonukem-local.json first (local override)
-        if [ -f .todonukem-local.json ]; then
-          TICKET_BASE_URL=$(jq -r '.ticketBaseUrl // empty' .todonukem-local.json)
-          if [ -n "$TICKET_BASE_URL" ]; then
-            echo "✅ Using ticketBaseUrl from .todonukem-local.json"
-            echo "TICKET_BASE_URL=$TICKET_BASE_URL" >> $GITHUB_ENV
-            exit 0
-          fi
-        fi
-
-        # Try .todonukem.json
-        if [ -f .todonukem.json ]; then
-          TICKET_BASE_URL=$(jq -r '.ticketBaseUrl // empty' .todonukem.json)
-          if [ -n "$TICKET_BASE_URL" ]; then
-            echo "✅ Using ticketBaseUrl from .todonukem.json"
-            echo "TICKET_BASE_URL=$TICKET_BASE_URL" >> $GITHUB_ENV
-            exit 0
-          fi
-        fi
-
-        # Fallback to package.json
-        if [ -f package.json ]; then
-          TICKET_BASE_URL=$(jq -r '.todonukem.ticketBaseUrl // empty' package.json)
-          if [ -n "$TICKET_BASE_URL" ]; then
-            echo "✅ Using ticketBaseUrl from package.json"
-            echo "TICKET_BASE_URL=$TICKET_BASE_URL" >> $GITHUB_ENV
-            exit 0
-          fi
-        fi
-
-        echo "⚠️ Warning: ticketBaseUrl not found in .todonukem-local.json, .todonukem.json or package.json"
-        echo "Skipping ticket link addition. Configure ticketBaseUrl in one of these files to enable this feature."
-        exit 0
+      run: bash ${{ github.action_path }}/scripts/read-config.sh
 
     - name: Extract ticket number from branch
       if: env.TICKET_BASE_URL
