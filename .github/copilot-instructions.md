@@ -107,6 +107,27 @@ Clean up unused authentication logic after migration.
 - Never use `any` type in TypeScript - use proper types, interfaces, or generics
 - Use explicit return types for functions
 - Avoid using `@ts-ignore` or `@ts-nocheck` - fix type issues properly
+- In suggestions, align with Clean Code (Robert C. Martin), especially for variable naming
+- Prefer early returns over if/else blocks, if it improves readability
+- Avoid deeply nested code - extract into smaller functions if necessary
+
+## Shell Scripts
+
+- When creating bash files, always create corresponding BATS tests
+- Place tests in a `tests/` directory next to the script
+- Name test files with `.bats` extension matching the script name (e.g., `script-name.sh` → `tests/script-name.bats`)
+- Make scripts executable with `chmod +x`
+- Use `#!/bin/bash` shebang and `set -e` for error handling
+- Test all success paths, error cases, and edge conditions
+
+## JavaScript Files
+
+- When creating JavaScript files, always create corresponding Vitest tests
+- Place tests in a `tests/` directory next to the script
+- Name test files with `.test.js` extension matching the script name (e.g., `script-name.js` → `tests/script-name.test.js`)
+- Export functions to make them testable
+- Test all success paths, error cases, and edge conditions
+- Use mocking for external dependencies (GitHub API, file system, etc.)
 
 ## TODO Comments
 
