@@ -100,3 +100,24 @@ teardown() {
   [[ "$output" == *"Using ticketBaseUrl from package.json"* ]]
   grep -q "TICKET_BASE_URL=https://pkg.example.com/" "$GITHUB_ENV"
 }
+
+@test "reads optional ticketPrefix from config" {
+  echo '{"ticketBaseUrl": "https://example.com/", "ticketPrefix": "AB#"}' > .todonukem.json
+  
+  run bash "$SCRIPT_PATH"
+  
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"Using ticketBaseUrl from .todonukem.json"* ]]
+  grep -q "TICKET_BASE_URL=https://example.com/" "$GITHUB_ENV"
+  grep -q "TICKET_PREFIX=AB#" "$GITHUB_ENV"
+}
+
+@test "works without ticketPrefix" {
+  echo '{"ticketBaseUrl": "https://example.com/"}' > .todonukem.json
+  
+  run bash "$SCRIPT_PATH"
+  
+  [ "$status" -eq 0 ]
+  grep -q "TICKET_BASE_URL=https://example.com/" "$GITHUB_ENV"
+  ! grep -q "TICKET_PREFIX" "$GITHUB_ENV"
+}

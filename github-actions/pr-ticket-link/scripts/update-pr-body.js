@@ -9,6 +9,7 @@ async function updatePrBody({ github, context, env }) {
   const hidePromotion = env.HIDE_PROMOTION === 'true';
   const ticketNumber = env.TICKET_NUMBER;
   const ticketBaseUrl = env.TICKET_BASE_URL;
+  const ticketPrefix = env.TICKET_PREFIX || '';
   const prNumber = context.payload.pull_request.number;
 
   // Get current PR
@@ -21,14 +22,18 @@ async function updatePrBody({ github, context, env }) {
   const currentBody = pr.body || '';
 
   // Check if ticket link already exists
-  const ticketLinkPattern = new RegExp(`🎫.*${ticketNumber}.*${ticketBaseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}${ticketNumber}`);
+  const displayText = ticketPrefix ? `${ticketPrefix}${ticketNumber}` : ticketNumber;
+  const escapedDisplayText = displayText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escapedBaseUrl = ticketBaseUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const ticketLinkPattern = new RegExp(`🎫.*${escapedDisplayText}.*${escapedBaseUrl}${ticketNumber}`);
+  
   if (ticketLinkPattern.test(currentBody)) {
     console.log('✅ Ticket link already exists in PR description, skipping update');
     return;
   }
 
   const promotion = hidePromotion ? '' : '\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*';
-  const ticketLink = `[ 🎫 [${ticketNumber}](${ticketBaseUrl}${ticketNumber}) ]${promotion}`;
+  const ticketLink = `[ 🎫 [${displayText}](${ticketBaseUrl}${ticketNumber}) ]${promotion}`;
 
   // Append ticket link to existing description
   const newBody = currentBody 

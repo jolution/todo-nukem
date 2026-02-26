@@ -46,6 +46,36 @@ Or create a `.todonukem.json` file (overrides `package.json`):
 }
 ```
 
+### Optional: Ticket Prefix
+
+Add a `ticketPrefix` to display a system-specific prefix in the ticket link text (prefix is only used for display, not in the URL):
+
+```json
+{
+  "ticketBaseUrl": "https://dev.azure.com/myorg/myproject/_workitems/edit/",
+  "ticketPrefix": "AB#"
+}
+```
+
+**Examples:**
+
+- **Azure DevOps** ([Learn more](https://learn.microsoft.com/en-us/azure/devops/boards/github/link-to-from-github?view=azure-devops)):
+  ```json
+  {
+    "ticketBaseUrl": "https://dev.azure.com/myorg/myproject/_workitems/edit/",
+    "ticketPrefix": "AB#"
+  }
+  ```
+  Branch: `feature/AB#1234-my-feature` → Shows: `[ 🎫 [AB#1234](...) ]`
+
+- **JIRA, Linear, or others** (default, no prefix):
+  ```json
+  {
+    "ticketBaseUrl": "https://jira.example.com/browse/"
+  }
+  ```
+  Branch: `feature/PROJ-1234-my-feature` → Shows: `[ 🎫 [1234](...) ]`
+
 ## Branch Naming
 
 Your branch names must contain a ticket ID:

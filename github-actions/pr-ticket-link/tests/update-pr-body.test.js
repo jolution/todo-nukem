@@ -134,4 +134,42 @@ describe('update-pr-body', () => {
       body: '[ 🎫 [1234](https://jira.example.com/browse?id=1234) ]\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*'
     });
   });
+
+  it('should use ticketPrefix when provided', async () => {
+    mockEnv.TICKET_PREFIX = 'AB#';
+
+    mockGithub.rest.pulls.get.mockResolvedValue({
+      data: {
+        body: ''
+      }
+    });
+
+    await updatePrBody({ github: mockGithub, context: mockContext, env: mockEnv });
+
+    expect(mockGithub.rest.pulls.update).toHaveBeenCalledWith({
+      owner: 'testowner',
+      repo: 'testrepo',
+      pull_number: 42,
+      body: '[ 🎫 [AB#1234](https://jira.example.com/browse/1234) ]\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*'
+    });
+  });
+
+  it('should work without ticketPrefix', async () => {
+    // No TICKET_PREFIX in env
+
+    mockGithub.rest.pulls.get.mockResolvedValue({
+      data: {
+        body: ''
+      }
+    });
+
+    await updatePrBody({ github: mockGithub, context: mockContext, env: mockEnv });
+
+    expect(mockGithub.rest.pulls.update).toHaveBeenCalledWith({
+      owner: 'testowner',
+      repo: 'testrepo',
+      pull_number: 42,
+      body: '[ 🎫 [1234](https://jira.example.com/browse/1234) ]\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*'
+    });
+  });
 });
