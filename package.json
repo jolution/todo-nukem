@@ -19,15 +19,9 @@
   },
   "homepage": "https://github.com/jolution/todo-nukem#readme",
   "scripts": {
-    "test": "conc --kill-others-on-fail --raw \"npm:test:*\"",
-    "test:bats": "bats github-actions/pr-ticket-link/tests/*.bats",
-    "test:vitest": "vitest run --no-watch"
+    "test": "bats github-actions/pr-ticket-link/tests/*.bats"
   },
   "todonukem": {
     "ticketBaseUrl": "https://your-domain.atlassian.net/browse/"
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1",
-    "vitest": "^4.0.18"
   }
 }
