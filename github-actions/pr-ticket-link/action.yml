@@ -7,7 +7,7 @@ description: "Automatically adds ticket links to PR descriptions based on branch
 author: "jolution"
 
 branding:
-  icon: "link"
+  icon: "external-link"
   color: "blue"
 
 inputs:
@@ -37,6 +37,9 @@ runs:
       if: env.TICKET_BASE_URL && env.TICKET_NUMBER
       env:
         HIDE_PROMOTION: ${{ inputs.hidePromotion }}
+        TICKET_BASE_URL: ${{ env.TICKET_BASE_URL }}
+        TICKET_NUMBER: ${{ env.TICKET_NUMBER }}
+        TICKET_PREFIX: ${{ env.TICKET_PREFIX }}
       with:
         github-token: ${{ inputs.github-token }}
         script-path: ${{ github.action_path }}/scripts/update-pr-body.js
