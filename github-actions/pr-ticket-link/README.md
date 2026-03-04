@@ -87,15 +87,17 @@ Your branch names must contain a ticket ID:
 
 ## Result
 
-Creates a PR description footer like:
+Appends a footer to the PR description like:
 
 ```markdown
 ---
+<!-- TODO NUKEM PR Ticket Link -->
+[ 🎫 [PROJ-123](https://jira.example.com/browse/PROJ-123) ]
 
-[🎫 PROJ-123](https://jira.example.com/browse/PROJ-123)
-
-_via [TODO NUKEM](https://github.com/jolution/todo-nukem)_
+*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*
 ```
+
+The HTML comment acts as a marker to prevent duplicate entries on subsequent runs.
 
 ## Inputs
 
