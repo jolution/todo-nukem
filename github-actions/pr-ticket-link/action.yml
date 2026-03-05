@@ -19,6 +19,10 @@ inputs:
     description: "Hide the 'via TODO NUKEM' promotion link"
     required: false
     default: "false"
+  linkStyle:
+    description: "Format of the ticket reference: 'markdown' for a Markdown link or 'plaintext' for plain text (e.g. for Azure DevOps auto-linking via AB#123)"
+    required: false
+    default: "markdown"
 
 runs:
   using: "composite"
@@ -37,6 +41,7 @@ runs:
       if: env.TICKET_BASE_URL && env.TICKET_NUMBER
       env:
         HIDE_PROMOTION: ${{ inputs.hidePromotion }}
+        LINK_STYLE: ${{ inputs.linkStyle }}
         TICKET_BASE_URL: ${{ env.TICKET_BASE_URL }}
         TICKET_NUMBER: ${{ env.TICKET_NUMBER }}
         TICKET_PREFIX: ${{ env.TICKET_PREFIX }}
@@ -59,12 +64,16 @@ runs:
           }
 
           const hidePromotion = process.env.HIDE_PROMOTION === 'true';
+          const linkStyle = process.env.LINK_STYLE || 'markdown';
           const ticketNumber = process.env.TICKET_NUMBER;
           const ticketBaseUrl = process.env.TICKET_BASE_URL;
           const ticketPrefix = process.env.TICKET_PREFIX || '';
           const displayText = ticketPrefix ? `${ticketPrefix}${ticketNumber}` : ticketNumber;
           const promotion = hidePromotion ? '' : '\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*';
-          const ticketLink = `${MARKER}\n[ 🎫 [${displayText}](${ticketBaseUrl}${ticketNumber}) ]${promotion}`;
+          const ticketRef = linkStyle === 'plaintext'
+            ? `${displayText}`
+            : `[${displayText}](${ticketBaseUrl}${ticketNumber})`;
+          const ticketLink = `${MARKER}\n[ 🎫 ${ticketRef} ]${promotion}`;
 
           const newBody = currentBody
             ? `${currentBody}\n\n---\n${ticketLink}`
