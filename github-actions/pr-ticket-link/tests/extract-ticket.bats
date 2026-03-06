@@ -50,6 +50,17 @@ teardown() {
   grep -q "TICKET_NUMBER=1234" "$GITHUB_ENV"
 }
 
+@test "extracts first ticket number and ignores trailing number in suffix like ak1" {
+  export GITHUB_HEAD_REF="ci/1234-add-ticket-to-commit-ak1"
+  
+  run bash "$SCRIPT_PATH"
+  
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"Found ticket number: 1234"* ]]
+  grep -q "TICKET_NUMBER=1234" "$GITHUB_ENV"
+  ! grep -q "TICKET_NUMBER=1" "$GITHUB_ENV" || grep -q "TICKET_NUMBER=1234" "$GITHUB_ENV"
+}
+
 @test "shows warning when no ticket number in branch name" {
   export GITHUB_HEAD_REF="feature/add-new-feature"
   

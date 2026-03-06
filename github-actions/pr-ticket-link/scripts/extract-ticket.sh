@@ -2,7 +2,7 @@
 set -e
 
 BRANCH_NAME="${GITHUB_HEAD_REF:-}"
-TICKET_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+' || true)
+TICKET_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+' | head -1 || true)
 
 if [ -z "$TICKET_NUMBER" ]; then
   echo "⚠️ No ticket number found in branch name"
