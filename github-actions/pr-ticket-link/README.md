@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Add ticket link to PR
         uses: jolution/todo-nukem/github-actions/pr-ticket-link@main
