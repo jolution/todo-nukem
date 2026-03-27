@@ -27,63 +27,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Read ticketBaseUrl
+    - name: Migration notice
       shell: bash
-      run: bash ${{ github.action_path }}/scripts/read-config.sh
+      run: |
+        echo "::notice::This action has moved to its own repository. Please update your workflow to use: jolution/todo-nukem-pr-ticket-link@v1"
 
-    - name: Extract ticket number from branch
-      if: env.TICKET_BASE_URL
-      shell: bash
-      run: bash ${{ github.action_path }}/scripts/extract-ticket.sh
-
-    - name: Update PR body
-      uses: actions/github-script@v7
-      if: env.TICKET_BASE_URL && env.TICKET_NUMBER
-      env:
-        HIDE_PROMOTION: ${{ inputs.hidePromotion }}
-        LINK_STYLE: ${{ inputs.linkStyle }}
-        TICKET_BASE_URL: ${{ env.TICKET_BASE_URL }}
-        TICKET_NUMBER: ${{ env.TICKET_NUMBER }}
-        TICKET_PREFIX: ${{ env.TICKET_PREFIX }}
+    - name: Run TODO NUKEM PR Ticket Link
+      uses: jolution/todo-nukem-pr-ticket-link@v1
       with:
         github-token: ${{ inputs.github-token }}
-        script: |
-          const MARKER = '<!-- TODO NUKEM PR Ticket Link -->';
-
-          const { data: pr } = await github.rest.pulls.get({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number
-          });
-
-          const currentBody = pr.body || '';
-
-          if (currentBody.includes(MARKER)) {
-            console.log('✅ Ticket link already exists in PR description, skipping update');
-            return;
-          }
-
-          const hidePromotion = process.env.HIDE_PROMOTION === 'true';
-          const linkStyle = process.env.LINK_STYLE || 'markdown';
-          const ticketNumber = process.env.TICKET_NUMBER;
-          const ticketBaseUrl = process.env.TICKET_BASE_URL;
-          const ticketPrefix = process.env.TICKET_PREFIX || '';
-          const displayText = ticketPrefix ? `${ticketPrefix}${ticketNumber}` : ticketNumber;
-          const promotion = hidePromotion ? '' : '\n\n*via [TODO NUKEM](https://github.com/jolution/todo-nukem)*';
-          const ticketRef = linkStyle === 'plaintext'
-            ? `${displayText}`
-            : `[${displayText}](${ticketBaseUrl}${ticketNumber})`;
-          const ticketLink = `${MARKER}\n[ 🎫 ${ticketRef} ]${promotion}`;
-
-          const newBody = currentBody
-            ? `${currentBody}\n\n---\n${ticketLink}`
-            : ticketLink;
-
-          await github.rest.pulls.update({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: context.payload.pull_request.number,
-            body: newBody
-          });
-
-          console.log('✅ PR description updated with ticket link');
+        hidePromotion: ${{ inputs.hidePromotion }}
+        linkStyle: ${{ inputs.linkStyle }}
