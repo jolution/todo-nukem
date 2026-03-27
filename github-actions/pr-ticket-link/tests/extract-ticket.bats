@@ -70,7 +70,15 @@ teardown() {
   [[ "$output" == *"No ticket number found in branch name"* ]]
   [ ! -s "$GITHUB_ENV" ]
 }
-
+@test "shows warning when branch contains a11y numeronym but no ticket number" {
+  export GITHUB_HEAD_REF="fix/a11y-navigation-landmark"
+  
+  run bash "$SCRIPT_PATH"
+  
+  [ "$status" -eq 0 ]
+  [[ "$output" == *"No ticket number found in branch name"* ]]
+  [ ! -s "$GITHUB_ENV" ]
+}
 @test "shows warning when branch name is empty" {
   export GITHUB_HEAD_REF=""
   
